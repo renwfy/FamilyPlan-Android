@@ -1,0 +1,42 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!-- titlemenu -->
+    <dimen name="title_menu_width">180dp</dimen>
+    <dimen name="ll_title">48dp</dimen>
+    <dimen name="ll_title_size">20sp</dimen>
+    <dimen name="ll_title_menu_item_height">40dp</dimen>
+
+    <!--titlebar-->
+    <dimen name="title_bar_width">44dp</dimen>
+    <dimen name="title_bar_height">44dp</dimen>
+    <dimen name="title_content_size">30dp</dimen>
+    <dimen name="title_font_size">20sp</dimen>
+    <dimen name="title_font_size_small">18sp</dimen>
+
+    <!--tab-->
+    <dimen name="tab_height">48dp</dimen>
+
+    <!--padding-->
+    <dimen name="padding_common">10dp</dimen>
+    <dimen name="padding_common_small">5dp</dimen>
+    <dimen name="padding_common_lagger">15dp</dimen>
+    <dimen name="padding_common_lagger2">30dp</dimen>
+
+    <!-- margin-->
+    <dimen name="margin_common">10dp</dimen>
+    <dimen name="margin_common_small">5dp</dimen>
+    <dimen name="margin_common_lagger">15dp</dimen>
+    <dimen name="margin_common_lagger2">30dp</dimen>
+    <dimen name="margin_common_lagger3">50dp</dimen>
+
+    <!-- 字体大小 -->
+    <dimen name="font_size_small">12sp</dimen>
+    <dimen name="font_size_mid">14sp</dimen>
+    <dimen name="font_size_common">16sp</dimen>
+    <dimen name="font_size_larger">18sp</dimen>
+    <dimen name="font_size_larger2">20sp</dimen>
+    <dimen name="font_size_larger3">24sp</dimen>
+</resources>
