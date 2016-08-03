@@ -8,8 +8,14 @@ import android.os.Message;
 
 import com.familyplan.ihealth.Constants;
 import com.familyplan.ihealth.IApplication;
+import com.familyplan.ihealth.event.GallerySelectEvent;
 import com.lib.activity.ActivityManager;
 import com.lib.utils.AppTips;
+import com.wq.photo.widget.PickConfig;
+
+import org.greenrobot.eventbus.EventBus;
+
+import java.util.ArrayList;
 
 /**
  * Created by LSD on 16/3/4.
@@ -117,6 +123,10 @@ public class AbstractActivity extends BaseActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode != RESULT_OK) {
             return;
+        }
+        if (requestCode == PickConfig.PICK_REQUEST_CODE) {
+            ArrayList<String> paths = data.getStringArrayListExtra("data");
+            EventBus.getDefault().post(new GallerySelectEvent(paths));
         }
     }
 }

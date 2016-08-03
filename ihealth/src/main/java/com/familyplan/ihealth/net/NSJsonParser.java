@@ -17,7 +17,7 @@ class NSJsonParser {
             Gson gson = new Gson();
             JsonResponse jr = gson.fromJson(json,
                     JsonResponse.class);
-            if (jr.getCode() == 0) {// success
+            if (jr.getError() == 0) {// success
                 if (clazz == null) {
                     Log.w(TAG, "null parse class");
                     callback.onSuccess(null);
@@ -41,7 +41,7 @@ class NSJsonParser {
                     }
                 }
             } else {
-                callback.onFail(jr.getCode(), jr.getMsg());
+                callback.onFail(jr.getError(), jr.getMsg());
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -51,16 +51,16 @@ class NSJsonParser {
     }
 
     static class JsonResponse {
-        int code;
+        int error;
         String msg;
         JsonElement data;
 
-        public int getCode() {
-            return code;
+        public int getError() {
+            return error;
         }
 
-        public void setCode(int code) {
-            this.code = code;
+        public void setError(int error) {
+            this.error = error;
         }
 
         public String getMsg() {

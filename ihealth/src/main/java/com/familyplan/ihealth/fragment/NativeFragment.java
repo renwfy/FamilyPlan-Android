@@ -34,6 +34,10 @@ public abstract class NativeFragment extends BaseFragment {
         }
     }
 
+    public void setTitleBarDisable(){
+        titleBar.setVisibility(View.GONE);
+    }
+
     private void initFrameLayout() {
         container = (LinearLayout) rootView.findViewById(R.id.ll_container);
         titleBar = (TitleBar) rootView.findViewById(R.id.titlebar);

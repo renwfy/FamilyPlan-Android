@@ -67,4 +67,20 @@ public class IApplication extends Application {
         ActivityManager.getScreenManager().popAllActivity();
         //context.startActivity(new Intent(context, LancherActivity.class));
     }
+
+
+    public User getUser() {
+        return session.getUser();
+    }
+
+    public int getUserId() {
+        User user = getUser();
+        if (user != null) {
+            return user.getUser_id();
+        } else {
+            return 12;
+        }
+    }
+
+
 }

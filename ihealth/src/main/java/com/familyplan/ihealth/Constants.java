@@ -12,10 +12,10 @@ public class Constants {
 
     public static String BASE_URL;
 
-    public static String QINIU_HOST = "http://zmkm.qiniudn.com/";//七牛地址
+    public static String QINIU_HOST = "http://oac4ul6pe.bkt.clouddn.com/";//七牛地址
 
     public static void initDebug(boolean isDebug) {
         DEBUG = isDebug;
-        BASE_URL = DEBUG ? "localhost:3012" : "http://api.ctchaonao.com/rest";
+        BASE_URL = DEBUG ? "http://10.0.2.2:3012/api" : "http://api.ctchaonao.com/rest";
     }
 }
