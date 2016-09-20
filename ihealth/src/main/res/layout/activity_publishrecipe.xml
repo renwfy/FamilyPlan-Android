@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <!--封面-->
+            <RelativeLayout
+                android:id="@+id/rl_playbill"
+                android:layout_width="match_parent"
+                android:layout_height="260dp">
+
+                <ImageView
+                    android:id="@+id/iv_playbill"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_test_recipe" />
+
+                <TextView
+                    android:id="@+id/tv_playbill_tips"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#60000000"
+                    android:gravity="center"
+                    android:text="点击上传封面"
+                    android:textColor="@color/text_white"
+                    android:textSize="@dimen/font_size_common" />
+
+                <TextView
+                    android:id="@+id/tv_playbill_change"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:background="#30000000"
+                    android:padding="@dimen/padding_common_lagger"
+                    android:text="编辑"
+                    android:textColor="@color/text_white"
+                    android:textSize="@dimen/font_size_common"
+                    android:visibility="gone" />
+            </RelativeLayout>
+            <!--简介-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="@dimen/padding_common_small">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:minHeight="30dp"
+                    android:text="添加名称:"
+                    android:textColor="@color/text_black"
+                    android:textSize="@dimen/font_size_common" />
+
+                <EditText
+                    android:id="@+id/et_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/layout_edittext_bg"
+                    android:hint="请输入食谱名称"
+                    android:minHeight="40dp"
+                    android:padding="@dimen/padding_common_small"
+                    android:textColor="@color/text_gray"
+                    android:textColorHint="@color/text_gray_light"
+                    android:textSize="@dimen/font_size_mid" />
+            </LinearLayout>
+            <!--简介-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="@dimen/padding_common_small">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:minHeight="30dp"
+                    android:text="添加简介:"
+                    android:textColor="@color/text_black"
+                    android:textSize="@dimen/font_size_common" />
+
+                <EditText
+                    android:id="@+id/et_brief"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/layout_edittext_bg"
+                    android:gravity="top"
+                    android:hint="请输入食谱简介"
+                    android:minHeight="80dp"
+                    android:padding="@dimen/padding_common_small"
+                    android:textColor="@color/text_gray"
+                    android:textColorHint="@color/text_gray_light"
+                    android:textSize="@dimen/font_size_mid" />
+            </LinearLayout>
+
+            <!--食材-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/padding_common_small">
+
+                <LinearLayout
+                    android:id="@+id/ll_add_material"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:minHeight="40dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:minHeight="30dp"
+                        android:text="添加食材:"
+                        android:textColor="@color/text_black"
+                        android:textSize="@dimen/font_size_common" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical|right"
+                        android:text="点击添加"
+                        android:textColor="@color/text_gray_light"
+                        android:textSize="@dimen/font_size_mid" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_common"
+                        android:layout_marginRight="@dimen/margin_common"
+                        android:text=">"
+                        android:textColor="@color/text_gray_light"
+                        android:textSize="@dimen/font_size_common" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layout_material"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"></LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:id="@+id/dir_mb"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginLeft="@dimen/margin_common_small"
+                android:layout_marginRight="@dimen/margin_common_small"
+                android:background="@color/line"></View>
+
+            <!--步骤-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/padding_common_small">
+
+                <LinearLayout
+                    android:id="@+id/ll_add_descript"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:minHeight="40dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:minHeight="30dp"
+                        android:text="添加步骤:"
+                        android:textColor="@color/text_black"
+                        android:textSize="@dimen/font_size_common" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical|right"
+                        android:text="点击添加"
+                        android:textColor="@color/text_gray_light"
+                        android:textSize="@dimen/font_size_mid" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_common"
+                        android:layout_marginRight="@dimen/margin_common"
+                        android:text=">"
+                        android:textColor="@color/text_gray_light"
+                        android:textSize="@dimen/font_size_common" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layout_descript"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"></LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layout_manager_descript"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/tv_add_descript"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="1dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/layout_corner_bg"
+                        android:gravity="center"
+                        android:padding="@dimen/padding_common_small"
+                        android:text="添加步骤" />
+
+                    <TextView
+                        android:id="@+id/tv_edit_descript"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="1dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/layout_corner_bg"
+                        android:gravity="center"
+                        android:padding="@dimen/padding_common_small"
+                        android:text="编辑步骤" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!--小提示-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="@dimen/padding_common_small">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:minHeight="30dp"
+                    android:text="添加小提示:"
+                    android:textColor="@color/text_black"
+                    android:textSize="@dimen/font_size_common" />
+
+                <EditText
+                    android:id="@+id/et_tips"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/layout_edittext_bg"
+                    android:gravity="top"
+                    android:hint="请输入小提示"
+                    android:minHeight="60dp"
+                    android:padding="@dimen/padding_common_small"
+                    android:textColor="@color/text_gray"
+                    android:textColorHint="@color/text_gray_light"
+                    android:textSize="@dimen/font_size_mid" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/bt_publis"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="@dimen/margin_common_lagger"
+                android:background="@color/main_color"
+                android:padding="@dimen/padding_common_small"
+                android:text="发布"
+                android:textColor="@color/text_white"
+                android:textSize="@dimen/font_size_common" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
+

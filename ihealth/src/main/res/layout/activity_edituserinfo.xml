@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/layout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/et_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/layout_edittext_bg"
+            android:hint="请输入"
+            android:maxLength="12"
+            android:minHeight="45dp"
+            android:padding="@dimen/padding_common"
+            android:textColor="@color/text_gray"
+            android:textColorHint="@color/text_gray_light"
+            android:textSize="@dimen/font_size_common" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/et_sign"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/layout_edittext_bg"
+            android:gravity="top"
+            android:hint="请输入个性签名"
+            android:minHeight="120dp"
+            android:padding="@dimen/padding_common"
+            android:textColor="@color/text_gray"
+            android:textColorHint="@color/text_gray_light"
+            android:textSize="@dimen/font_size_common" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_male"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:minHeight="45dp"
+            android:padding="@dimen/padding_common"
+            android:text="男"
+            android:textColor="@color/text_gray"
+            android:textColorHint="@color/text_gray_light"
+            android:textSize="@dimen/font_size_common" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1.5px"
+            android:background="@color/line"></View>
+
+        <TextView
+            android:id="@+id/tv_fmale"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:minHeight="45dp"
+            android:padding="@dimen/padding_common"
+            android:text="女"
+            android:textColor="@color/text_gray"
+            android:textColorHint="@color/text_gray_light"
+            android:textSize="@dimen/font_size_common" />
+    </LinearLayout>
+
+</LinearLayout>
+

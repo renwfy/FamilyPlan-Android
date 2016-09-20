@@ -25,6 +25,9 @@ public abstract class SimpleAdapter<T> extends BaseAdapter {
         list = data;
     }
 
+    public List<T> getData(){
+        return list;
+    }
 
     public void setData(List<T> list){
         this.list = list;

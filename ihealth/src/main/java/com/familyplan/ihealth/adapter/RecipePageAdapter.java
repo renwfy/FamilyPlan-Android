@@ -4,26 +4,30 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import java.util.List;
+import com.familyplan.ihealth.fragment.FragmentRecipeList;
 
 /**
  * Created by LSD on 16/6/2.
  */
 public class RecipePageAdapter extends FragmentPagerAdapter {
-    List<Fragment> fragmentList;
-
-    public RecipePageAdapter(FragmentManager fm, List<Fragment> list) {
+    public RecipePageAdapter(FragmentManager fm) {
         super(fm);
-        this.fragmentList = list;
     }
 
     @Override
     public Fragment getItem(int position) {
-        return fragmentList.get(position);
+        if (0 == position) {
+            return FragmentRecipeList.getInstance(1);
+        }
+        if (1 == position) {
+            return FragmentRecipeList.getInstance(2);
+        }
+        return null;
     }
+
 
     @Override
     public int getCount() {
-        return fragmentList.size();
+        return 2;
     }
 }

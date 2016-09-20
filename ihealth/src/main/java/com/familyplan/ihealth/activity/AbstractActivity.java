@@ -8,6 +8,7 @@ import android.os.Message;
 
 import com.familyplan.ihealth.Constants;
 import com.familyplan.ihealth.IApplication;
+import com.familyplan.ihealth.event.DescriptSelectEvent;
 import com.familyplan.ihealth.event.GallerySelectEvent;
 import com.lib.activity.ActivityManager;
 import com.lib.utils.AppTips;
@@ -98,7 +99,7 @@ public class AbstractActivity extends BaseActivity {
 
     @Override
     public void notLogin() {
-        IApplication.getInstance().logout(mActivity);
+        IApplication.getInstance().notLogin(mActivity);
     }
 
     // 两次返回退出
@@ -126,7 +127,11 @@ public class AbstractActivity extends BaseActivity {
         }
         if (requestCode == PickConfig.PICK_REQUEST_CODE) {
             ArrayList<String> paths = data.getStringArrayListExtra("data");
-            EventBus.getDefault().post(new GallerySelectEvent(paths));
+            if(mActivity instanceof PublishDescriptActivity){
+                EventBus.getDefault().post(new DescriptSelectEvent(paths));
+            }else{
+                EventBus.getDefault().post(new GallerySelectEvent(paths));
+            }
         }
     }
 }

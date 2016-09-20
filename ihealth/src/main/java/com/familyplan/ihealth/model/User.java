@@ -1,27 +1,46 @@
 package com.familyplan.ihealth.model;
 
+import java.io.Serializable;
+
 /**
  * Created by LSD on 16/7/23.
  */
-public class User {
-
-    /**
-     * created_date : 2016-07-02 16:29:18
-     * height : 167
-     * role : 1
-     * sex : 1
-     * user_id : 12
-     * user_name : 18662430879
-     * weight : 45
-     */
-
+public class User implements Serializable{
     private String created_date;
     private String user_name;
+    private String nick_name;
+    private String sign;
+    private String avstart;
     private int height;
     private int role;
     private int sex;
+    private int age;
     private int user_id;
     private int weight;
+
+    public String getAvstart() {
+        return avstart;
+    }
+
+    public void setAvstart(String avstart) {
+        this.avstart = avstart;
+    }
+
+    public String getSign() {
+        return sign;
+    }
+
+    public void setSign(String sign) {
+        this.sign = sign;
+    }
+
+    public String getNick_name() {
+        return nick_name;
+    }
+
+    public void setNick_name(String nick_name) {
+        this.nick_name = nick_name;
+    }
 
     public String getCreated_date() {
         return created_date;
@@ -53,6 +72,14 @@ public class User {
 
     public void setSex(int sex) {
         this.sex = sex;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 
     public int getUser_id() {

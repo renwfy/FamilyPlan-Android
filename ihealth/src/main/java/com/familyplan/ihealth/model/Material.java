@@ -1,9 +1,11 @@
 package com.familyplan.ihealth.model;
 
+import java.io.Serializable;
+
 /**
  * Created by LSD on 16/7/31.
  */
-public class Material {
+public class Material implements Serializable{
 
     /**
      * name : 里脊肉

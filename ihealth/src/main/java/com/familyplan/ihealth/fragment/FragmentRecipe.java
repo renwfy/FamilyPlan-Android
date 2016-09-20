@@ -1,6 +1,5 @@
 package com.familyplan.ihealth.fragment;
 
-import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 
 import com.familyplan.ihealth.R;
@@ -18,14 +17,13 @@ import butterknife.BindView;
  * Created by LSD on 16/7/23.
  */
 public class FragmentRecipe extends NativeFragment {
-    @BindView(R.id.tablayout)
+    @BindView(R.id.rp_tablayout)
     CommonTabLayout tablayout;
-    @BindView(R.id.viewpage)
+    @BindView(R.id.rp_viewpage)
     ViewPager viewpage;
 
-    private String[] mTitles = {"大众食谱", "营养师推荐"};
+    private String[] mTitles = {"标准版", "减脂版"};
     private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
-    private ArrayList<Fragment> mFragments = new ArrayList<>();
 
     @Override
     public int getContentView() {
@@ -58,8 +56,6 @@ public class FragmentRecipe extends NativeFragment {
         });
         tablayout.setTabData(mTabEntities);
 
-        mFragments.add(FragmentRecipePublic.getInstance());
-        mFragments.add(FragmentReciperMaster.getInstance());
         viewpage.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -75,17 +71,16 @@ public class FragmentRecipe extends NativeFragment {
             public void onPageScrollStateChanged(int state) {
             }
         });
-        viewpage.setAdapter(new RecipePageAdapter(mContext.getSupportFragmentManager(),mFragments));
+        viewpage.setAdapter(new RecipePageAdapter(mContext.getSupportFragmentManager()));
 
         //初始化
-        tablayout.setCurrentTab(0);
         resetTabStatus(0);
     }
 
-    private void resetTabStatus(int position){
+    private void resetTabStatus(int position) {
         for (int i = 0; i < mTitles.length; i++) {
-            tablayout.getTitleView(i).setTextSize(17);
+            tablayout.getTitleView(i).setTextSize(15);
         }
-        tablayout.getTitleView(position).setTextSize(19);
+        tablayout.getTitleView(position).setTextSize(16);
     }
 }

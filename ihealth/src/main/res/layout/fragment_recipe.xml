@@ -6,7 +6,7 @@
     android:orientation="vertical">
 
     <com.flyco.tablayout.CommonTabLayout
-        android:id="@+id/tablayout"
+        android:id="@+id/rp_tablayout"
         android:layout_width="match_parent"
         android:layout_height="@dimen/tab_height"
         android:background="@color/main_color"
@@ -19,7 +19,7 @@
         tl:tl_textsize="@dimen/font_size_common" />
 
     <android.support.v4.view.ViewPager
-        android:id="@+id/viewpage"
+        android:id="@+id/rp_viewpage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"></android.support.v4.view.ViewPager>
 </LinearLayout>

@@ -16,6 +16,6 @@ public class Constants {
 
     public static void initDebug(boolean isDebug) {
         DEBUG = isDebug;
-        BASE_URL = DEBUG ? "http://10.0.2.2:3012/api" : "http://api.ctchaonao.com/rest";
+        BASE_URL = DEBUG ? "http://10.0.2.2:3012/api" : "http://10.0.2.2:3012/api";
     }
 }

@@ -1,14 +1,17 @@
 package com.familyplan.ihealth.activity;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.familyplan.ihealth.IApplication;
 import com.familyplan.ihealth.R;
 import com.familyplan.ihealth.api.Api;
 import com.familyplan.ihealth.model.Descript;
@@ -29,6 +32,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * Created by LSD on 16/7/31.
@@ -40,7 +44,7 @@ public class RecipeDetailsActivity extends CommonActivity {
     @BindView(R.id.tv_title)
     TextView tvTitle;
     @BindView(R.id.iv_avstart)
-    ImageView ivAvstart;
+    CircleImageView ivAvstart;
     @BindView(R.id.tv_uname)
     TextView tvUname;
     @BindView(R.id.tv_likeinfo)
@@ -61,6 +65,10 @@ public class RecipeDetailsActivity extends CommonActivity {
     TextView tvCollect;
     @BindView(R.id.tv_share)
     TextView tvShare;
+    @BindView(R.id.ratingbar)
+    RatingBar ratingbar;
+    @BindView(R.id.tv_reviews)
+    TextView tvReviews;
 
     RecipeDetails details;
     boolean isCollect = false;
@@ -74,8 +82,13 @@ public class RecipeDetailsActivity extends CommonActivity {
     @Override
     protected void onViewCreated() {
         super.onViewCreated();
-        setTitle("详情");
+        setTitle("");
+        setTitleBarDisable();
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
         loadData();
     }
 
@@ -88,6 +101,9 @@ public class RecipeDetailsActivity extends CommonActivity {
                 Picasso.with(mActivity).load(recipe.getPlaybill()).into(ivPlaybill, new Callback.EmptyCallback() {
                     @Override
                     public void onSuccess() {
+                        if (ivPlaybill == null) {
+                            return;
+                        }
                         int imageW = ivPlaybill.getDrawable().getIntrinsicWidth();
                         int imageH = ivPlaybill.getDrawable().getIntrinsicHeight();
                         final int screenW = DensityUtil.screenWidthInPx(mActivity);
@@ -100,16 +116,29 @@ public class RecipeDetailsActivity extends CommonActivity {
                     }
                 });
 
-                setTitle(recipe.getTitle());
                 tvTitle.setText(recipe.getTitle());
                 tvBrief.setText(recipe.getBrief());
                 tvLikeinfo.setText("" + recipe.getFavor_num() + "人收藏 / " + recipe.getNice_num() + "人点赞 / " + recipe.getUpdated_date() + "发布");
-                tvUname.setText(recipe.getUser_name());
-                if(!TextUtils.isEmpty(recipe.getAvstart())){
+                tvUname.setText(TextUtils.isEmpty(recipe.getNick_name()) ? "" : recipe.getNick_name());
+                if (!TextUtils.isEmpty(recipe.getAvstart())) {
                     ivAvstart.setVisibility(View.VISIBLE);
                     Picasso.with(mActivity).load(recipe.getAvstart()).into(ivAvstart);
-                }else {
+                } else {
                     ivAvstart.setVisibility(View.GONE);
+                }
+
+                //营养师点评
+                int reviews_vote = recipe.getReviews_vote();
+                if (reviews_vote < 2) reviews_vote = 2;
+                if (reviews_vote > 5) reviews_vote = 5;
+                ratingbar.setNumStars(reviews_vote);
+
+                String reviews = recipe.getReviews();
+                if (!TextUtils.isEmpty(reviews)) {
+                    tvReviews.setVisibility(View.VISIBLE);
+                    tvReviews.setText(reviews);
+                } else {
+                    tvReviews.setVisibility(View.GONE);
                 }
 
                 //材料
@@ -183,7 +212,8 @@ public class RecipeDetailsActivity extends CommonActivity {
         if (layoutDetails.getChildCount() > 0) {
             layoutDetails.removeAllViews();
         }
-        for (Descript descript : descripts) {
+        for (int i = 0; i < descripts.size(); i++) {
+            Descript descript = descripts.get(i);
             View view = LayoutInflater.from(mActivity).inflate(R.layout.view_descript_item, null);
             final RelativeLayout rl_descript = (RelativeLayout) view.findViewById(R.id.rl_descript);
             final ImageView imageView = (ImageView) view.findViewById(R.id.iv_playbill);
@@ -192,7 +222,7 @@ public class RecipeDetailsActivity extends CommonActivity {
             Picasso.with(mActivity).load(descript.getImg()).into(imageView, new Callback.EmptyCallback() {
                 @Override
                 public void onSuccess() {
-                    final int screenW = DensityUtil.screenWidthInPx(mActivity) - DensityUtil.dip2px(mActivity, 20);
+                    final int screenW = DensityUtil.screenWidthInPx(mActivity) - DensityUtil.dip2px(mActivity, 10);
                     int imageW = imageView.getDrawable().getIntrinsicWidth();
                     int imageH = imageView.getDrawable().getIntrinsicHeight();
                     int H = screenW * imageH / imageW;
@@ -209,19 +239,19 @@ public class RecipeDetailsActivity extends CommonActivity {
                     imageView.setLayoutParams(params);
                 }
             });
-            tv_text.setText(descript.getText());
+            tv_text.setText((i + 1) + "、" + descript.getText());
             layoutDetails.addView(view);
         }
     }
 
-    public void setNiceStatus(boolean status){
-        if(status){
+    public void setNiceStatus(boolean status) {
+        if (status) {
             isNice = true;
             Drawable drawable = getResources().getDrawable(R.drawable.ic_nice_level2);
             drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
             tvNice.setCompoundDrawables(null, drawable, null, null);
             tvNice.setTextColor(getResources().getColor(R.color.main_color));
-        }else{
+        } else {
             isNice = false;
             Drawable drawable = getResources().getDrawable(R.drawable.ic_nice_level1);
             drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
@@ -230,14 +260,14 @@ public class RecipeDetailsActivity extends CommonActivity {
         }
     }
 
-    public void setCollectStatus(boolean status){
-        if(status){
+    public void setCollectStatus(boolean status) {
+        if (status) {
             isCollect = true;
             Drawable drawable = getResources().getDrawable(R.drawable.ic_collect_level2);
             drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
             tvCollect.setCompoundDrawables(null, drawable, null, null);
             tvCollect.setTextColor(getResources().getColor(R.color.main_color));
-        }else{
+        } else {
             isCollect = false;
             Drawable drawable = getResources().getDrawable(R.drawable.ic_collect_level1);
             drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
@@ -247,9 +277,13 @@ public class RecipeDetailsActivity extends CommonActivity {
     }
 
     @OnClick(R.id.tv_nice)
-    public void nice(){
-        if(!isNice){
-            Api.setRecipeNice(details.getId(), 1, new NSCallback<SuccessComm>(mActivity,SuccessComm.class) {
+    public void nice() {
+        if(!IApplication.isLogin()){
+            startActivity(new Intent(mActivity,LoginActivity.class));
+            return;
+        }
+        if (!isNice) {
+            Api.setRecipeNice(details.getId(), 1, new NSCallback.NSTokenCallback<SuccessComm>(mActivity, SuccessComm.class) {
                 @Override
                 public void onSuccess(SuccessComm successComm) {
                     AppTips.showToast("点赞成功");
@@ -260,17 +294,21 @@ public class RecipeDetailsActivity extends CommonActivity {
     }
 
     @OnClick(R.id.tv_collect)
-    public void collect(){
-        if(isCollect){
-            Api.setRecipeFavor(details.getId(), 0, new NSCallback<SuccessComm>(mActivity,SuccessComm.class) {
+    public void collect() {
+        if(!IApplication.isLogin()){
+            startActivity(new Intent(mActivity,LoginActivity.class));
+            return;
+        }
+        if (isCollect) {
+            Api.setRecipeFavor(details.getId(), 0, new NSCallback.NSTokenCallback<SuccessComm>(mActivity, SuccessComm.class) {
                 @Override
                 public void onSuccess(SuccessComm successComm) {
                     AppTips.showToast("您已取消收藏");
                     setCollectStatus(false);
                 }
             });
-        }else{
-            Api.setRecipeFavor(details.getId(), 1, new NSCallback<SuccessComm>(mActivity,SuccessComm.class) {
+        } else {
+            Api.setRecipeFavor(details.getId(), 1, new NSCallback.NSTokenCallback<SuccessComm>(mActivity, SuccessComm.class) {
                 @Override
                 public void onSuccess(SuccessComm successComm) {
                     AppTips.showToast("收藏成功");
@@ -279,5 +317,4 @@ public class RecipeDetailsActivity extends CommonActivity {
             });
         }
     }
-
 }

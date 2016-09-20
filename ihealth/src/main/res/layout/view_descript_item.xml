@@ -30,5 +30,5 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="@dimen/padding_common"></View>
+        android:layout_height="@dimen/padding_common_small"></View>
 </LinearLayout>

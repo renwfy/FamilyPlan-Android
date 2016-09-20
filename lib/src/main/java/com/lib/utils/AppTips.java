@@ -23,6 +23,8 @@ public class AppTips {
         if (TextUtils.isEmpty(content)) {
             return;
         }
-        Toast.makeText(context, content, Toast.LENGTH_SHORT).show();
+        Toast toast = Toast.makeText(context, content, Toast.LENGTH_SHORT);
+        toast.getView().getBackground().setAlpha(128);//设置透明度
+        toast.show();
     }
 }

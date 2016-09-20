@@ -16,7 +16,6 @@ public class RecipeDetails {
      */
 
     private int id;
-    private  int user_id;
     private String title;
     private String brief;
     private String playbill;
@@ -25,10 +24,12 @@ public class RecipeDetails {
     private String description;
     private String tips;
     private String reviews;
+    private int reviews_vote;
     private int favor_num;
     private int nice_num;
     String avstart;
     String user_name;
+    String nick_name;
     int is_favor;
     int is_nice;
     private String updated_date;
@@ -121,20 +122,20 @@ public class RecipeDetails {
         this.updated_date = updated_date;
     }
 
+    public int getReviews_vote() {
+        return reviews_vote;
+    }
+
+    public void setReviews_vote(int reviews_vote) {
+        this.reviews_vote = reviews_vote;
+    }
+
     public int getNice_num() {
         return nice_num;
     }
 
     public void setNice_num(int nice_num) {
         this.nice_num = nice_num;
-    }
-
-    public int getUser_id() {
-        return user_id;
-    }
-
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
     }
 
     public String getAvstart() {
@@ -167,5 +168,13 @@ public class RecipeDetails {
 
     public void setIs_nice(int is_nice) {
         this.is_nice = is_nice;
+    }
+
+    public String getNick_name() {
+        return nick_name;
+    }
+
+    public void setNick_name(String nick_name) {
+        this.nick_name = nick_name;
     }
 }

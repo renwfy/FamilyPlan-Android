@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/rl_despic"
+                android:layout_width="match_parent"
+                android:layout_height="260dp">
+
+                <ImageView
+                    android:id="@+id/iv_despic"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_test_recipe" />
+
+                <TextView
+                    android:id="@+id/tv_despic_tips"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#60000000"
+                    android:gravity="center"
+                    android:text="点击上传图片"
+                    android:textColor="@color/text_white"
+                    android:textSize="@dimen/font_size_common" />
+
+                <TextView
+                    android:id="@+id/tv_despic_change"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:background="#30000000"
+                    android:padding="@dimen/padding_common_lagger"
+                    android:text="编辑"
+                    android:textColor="@color/text_white"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <EditText
+                android:id="@+id/et_decript"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/layout_edittext_bg"
+                android:gravity="top"
+                android:hint="请输入步骤描述"
+                android:minHeight="120dp"
+                android:padding="@dimen/padding_common_small"
+                android:textColor="@color/text_gray"
+                android:textColorHint="@color/text_gray_light"
+                android:textSize="@dimen/font_size_mid" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

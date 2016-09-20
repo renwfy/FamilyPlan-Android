@@ -3,6 +3,8 @@ package com.familyplan.ihealth.net;
 import android.text.TextUtils;
 
 import com.familyplan.ihealth.Constants;
+import com.familyplan.ihealth.IApplication;
+import com.familyplan.ihealth.utils.VersionManager;
 import com.lib.utils.AppLog;
 
 import java.net.URLEncoder;
@@ -20,29 +22,42 @@ public class NSHttpClent {
         BASE_URL = baseUrl;
     }
 
-    public static NSRequest get(String url, Map<String, String> pamas, NSCallback callback) {
-        pamas = addParams(pamas);
+    public static NSRequest get(String url,Map<String, String> pamas, NSCallback callback) {
+        return get(url,null,pamas,callback);
+    }
+    public static NSRequest get(String url, Map<String, String> headers,Map<String, String> pamas, NSCallback callback) {
+        pamas = addParams(pamas,callback);
         url = buildUrl(url, pamas);
-        NSRequest request = new DefaultRequest(NSRequest.RequestMethod.GET,BASE_URL + url, callback);
-        request.setHeaders(setHeader(null, callback));
+        NSRequest request = new DefaultRequest(NSRequest.RequestMethod.GET,url.contains("http") ? url : BASE_URL + url, callback);
+        request.setHeaders(setHeader(headers, callback));
         return request.doRequest();
     }
 
     public static NSRequest post(String url, Map<String, String> pamas, NSCallback callback) {
-        pamas = addParams(pamas);
-        NSRequest request = new DefaultRequest(NSRequest.RequestMethod.POST,BASE_URL + url, callback);
+        return post(url,null,pamas,callback);
+    }
+    public static NSRequest post(String url, Map<String, String> headers,Map<String, String> pamas, NSCallback callback) {
+        pamas = addParams(pamas,callback);
+        NSRequest request = new DefaultRequest(NSRequest.RequestMethod.POST, url.contains("http") ? url : BASE_URL + url, callback);
         request.setParams(pamas);
-        request.setHeaders(setHeader(null, callback));
+        request.setHeaders(setHeader(headers, callback));
         return request.doRequest();
     }
 
-    public static Map<String, String> addParams(Map<String, String> params) {
+    public static Map<String, String> addParams(Map<String, String> params, NSCallback callback) {
         if (params == null) {
             params = new HashMap<>();
         }
+        if (callback != null && callback instanceof NSCallback.NSTokenCallback) {
+            int user_id = IApplication.getInstance().getUserId();
+            if (0 == user_id) {
+                callback.notLogin();
+                return params;
+            }
+            params.put("user_id", user_id+"");
+        }
         params.put("_o", "" + Constants.OS_TYPE);    // 操作系统
-        //params.put("_u", "" + IApplication.getInstance().getUserId());    // 用户id
-        //params.put("_v", "" + VersionManager.getAppVersion(CNApplication.getInstance()));    // 版本号*/
+        params.put("_v", "" + VersionManager.getAppVersion(IApplication.getInstance()));    // 版本号*/
         return params;
     }
 
@@ -51,12 +66,12 @@ public class NSHttpClent {
             header = new HashMap<>();
         }
         if (callback != null && callback instanceof NSCallback.NSTokenCallback) {
-            String token = "123";//IApplication.getInstance().getToken();
+            String token = "123";//gettoken
             if (TextUtils.isEmpty(token)) {
                 callback.notLogin();
                 return header;
             }
-            header.put("x-auth-token", token); // token
+            header.put("token", token); // token
         }
         return header;
     }

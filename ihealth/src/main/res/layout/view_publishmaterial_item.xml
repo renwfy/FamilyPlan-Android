@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:padding="@dimen/padding_common_small">
+
+        <EditText
+            android:id="@+id/et_mname"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:background="@drawable/layout_underline"
+            android:focusable="true"
+            android:hint="请输入食材名称"
+            android:textColor="@color/text_gray"
+            android:textColorHint="@color/text_gray_light"
+            android:textSize="@dimen/font_size_mid" />
+
+        <EditText
+            android:id="@+id/et_mmeasure"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_marginLeft="@dimen/margin_common_lagger"
+            android:layout_marginRight="@dimen/margin_common_lagger"
+            android:background="@drawable/layout_underline"
+            android:gravity="center"
+            android:hint="用量"
+            android:minWidth="85dp"
+            android:textColor="@color/text_gray"
+            android:textColorHint="@color/text_gray_light"
+            android:textSize="@dimen/font_size_mid" />
+
+        <EditText
+            android:id="@+id/et_munit"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:background="@drawable/layout_underline"
+            android:gravity="center"
+            android:hint="单位"
+            android:minWidth="45dp"
+            android:textColor="@color/text_gray"
+            android:textColorHint="@color/text_gray_light"
+            android:textSize="@dimen/font_size_mid" />
+
+        <ImageView
+            android:id="@+id/iv_remove"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/margin_common"
+            android:src="@drawable/ic_remove" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"></View>
+</LinearLayout>

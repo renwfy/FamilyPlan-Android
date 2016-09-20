@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rp_public_contentview"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
+    android:descendantFocusability="blocksDescendants"
     android:orientation="vertical">
 
     <View
@@ -23,7 +25,7 @@
         android:paddingBottom="@dimen/padding_common_small"
         android:paddingLeft="@dimen/padding_common"
         android:paddingRight="@dimen/padding_common"
-        android:paddingTop="@dimen/padding_common">
+        android:paddingTop="@dimen/padding_common_small">
 
         <TextView
             android:id="@+id/tv_title"
@@ -31,34 +33,43 @@
             android:layout_height="wrap_content"
             android:text=""
             android:textColor="@color/text_black"
-            android:textSize="@dimen/font_size_common" />
+            android:textSize="@dimen/font_size_larger" />
 
         <TextView
             android:id="@+id/tv_brief"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_common_small"
             android:layout_marginTop="@dimen/margin_common_small"
             android:ellipsize="end"
             android:maxLines="2"
             android:text=""
-            android:textColor="@color/text_gray_light"
+            android:textColor="@color/text_gray"
             android:textSize="@dimen/font_size_mid" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_common"
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/tv_type"
+                android:id="@+id/tv_star"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/ic_type"
                 android:gravity="center_vertical"
-                android:text="减肥"
-                android:textColor="@color/text_gray_light"
+                android:text="营养师评分"
+                android:textColor="@color/text_gray"
                 android:textSize="@dimen/font_size_mid" />
+
+            <RatingBar
+                android:id="@+id/ratingbar"
+                style="@style/reviewRatingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/margin_common_small"
+                android:clickable="false"
+                android:numStars="2" />
 
             <View
                 android:layout_width="match_parent"
@@ -70,22 +81,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/margin_common"
-                android:drawableLeft="@drawable/ic_nice_s"
+                android:drawableLeft="@drawable/ic_nice1"
                 android:gravity="center_vertical"
-                android:text="100"
-                android:textColor="@color/text_gray_light"
-                android:textSize="@dimen/font_size_mid" />
+                android:text=""
+                android:textColor="@color/main_color_dark"
+                android:textSize="@dimen/font_size_common" />
 
             <TextView
                 android:id="@+id/tv_hot"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/margin_common_lagger"
-                android:drawableLeft="@drawable/ic_hot_s"
+                android:drawableLeft="@drawable/ic_hot1"
                 android:gravity="center_vertical"
-                android:text="200"
-                android:textColor="@color/text_gray_light"
-                android:textSize="@dimen/font_size_mid" />
+                android:text=""
+                android:textColor="@color/main_color_dark"
+                android:textSize="@dimen/font_size_common" />
         </LinearLayout>
     </LinearLayout>
 

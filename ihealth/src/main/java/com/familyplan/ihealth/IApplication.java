@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 
+import com.familyplan.ihealth.activity.LoginActivity;
 import com.familyplan.ihealth.model.User;
 import com.familyplan.ihealth.net.NSRequestManager;
 import com.lib.AppLib;
@@ -27,19 +28,24 @@ public class IApplication extends Application {
         app = this;
         session = Session.load();
 
+        //app
         AppLib.init(this);
         AppLib.setDebug(Constants.DEBUG);
         AppLib.initFileUtil(Constants.BASE_FOLDER);
         NSRequestManager.init(this, Constants.BASE_URL);
     }
 
-    private void initDebug(){
+    private void initDebug() {
         Constants.initDebug(Boolean.parseBoolean(getString(R.string.debug)));
     }
 
     public static void exit() {
         ActivityManager.getScreenManager().popAllActivity();
         System.exit(1);
+    }
+
+    public static boolean isLogin() {
+        return getInstance().getUserId() > 0;
     }
 
     /***
@@ -51,8 +57,7 @@ public class IApplication extends Application {
     public void login(Context context, User user) {
         session.saveUser(user);
         //syncJPush();
-        context.startActivity(new Intent(context, MainActivity.class));
-        ActivityManager.getScreenManager().popTopActivity();
+        ActivityManager.getScreenManager().popLoginActivity();
     }
 
     /***
@@ -64,8 +69,30 @@ public class IApplication extends Application {
         //清除用户数据
         session.logout();
         //syncJPush();
-        ActivityManager.getScreenManager().popAllActivity();
-        //context.startActivity(new Intent(context, LancherActivity.class));
+        ActivityManager.getScreenManager().popTopActivity();
+    }
+
+    /***
+     * 没有登录
+     *
+     * @param context
+     */
+    public void notLogin(Context context) {
+        context.startActivity(new Intent(context, LoginActivity.class));
+    }
+
+    /***
+     * 必须登录
+     */
+    public static void startActivityWithAuth(Context context, Class<?> clz) {
+        startActivityWithAuth(context,new Intent(context,clz));
+    }
+    public static void startActivityWithAuth(Context context, Intent intent) {
+        if (isLogin()) {
+            context.startActivity(intent);
+        } else {
+            IApplication.getInstance().notLogin(context);
+        }
     }
 
 
@@ -73,12 +100,16 @@ public class IApplication extends Application {
         return session.getUser();
     }
 
+    public void saveUser(User user) {
+        session.saveUser(user);
+    }
+
     public int getUserId() {
         User user = getUser();
         if (user != null) {
             return user.getUser_id();
         } else {
-            return 12;
+            return 0;
         }
     }
 

@@ -16,7 +16,7 @@ public class MainActivity extends AbstractActivity {
     FragmentTabHost mTabHost;
     //tab数据
     private TabMenuView[] tabs = new TabMenuView[4];
-    private String mTextviewArray[] = {"首页", "智能体检", "营养食谱", "我"};
+    private String mTextviewArray[] = {"首页", "定制减脂", "减脂食谱", "我"};
     private int mImageViewArray[] = {R.drawable.ic_tab_home, R.drawable.ic_tab_detect, R.drawable.ic_tab_recipe, R.drawable.ic_tab_my};
     private Class fragmentArray[] = {FragmentHome.class, FragmentDetect.class,  FragmentRecipe.class ,FragmentMy.class};
 

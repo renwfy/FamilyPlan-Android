@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/main_bg"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="@dimen/padding_common">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_phone" />
+
+            <EditText
+                android:id="@+id/et_phone"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/margin_common_lagger"
+                android:background="@null"
+                android:hint="输入手机号"
+                android:inputType="phone"
+                android:textColor="@color/text_black"
+                android:textColorHint="@color/gray_light"
+                android:textSize="@dimen/font_size_common" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/line"></View>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="@dimen/padding_common">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_password" />
+
+            <EditText
+                android:id="@+id/et_pass"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/margin_common_lagger"
+                android:layout_weight="1"
+                android:background="@null"
+                android:hint="输入密码"
+                android:inputType="textPassword"
+                android:textColor="@color/text_black"
+                android:textColorHint="@color/gray_light"
+                android:textSize="@dimen/font_size_common" />
+
+            <ImageView
+                android:id="@+id/iv_showpass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_common_small"
+                android:src="@drawable/ic_showpwd" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/bt_login"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginLeft="@dimen/margin_common_lagger"
+        android:layout_marginRight="@dimen/margin_common_lagger"
+        android:layout_marginTop="@dimen/margin_common"
+        android:background="@color/main_color"
+        android:padding="@dimen/padding_common_small"
+        android:text="登录"
+        android:textColor="@color/text_white"
+        android:textSize="@dimen/font_size_common" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_common_lagger"
+        android:layout_marginRight="@dimen/margin_common_lagger">
+
+        <TextView
+            android:id="@+id/tv_forgot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingBottom="@dimen/padding_common"
+            android:paddingTop="@dimen/padding_common"
+            android:text="忘记密码"
+            android:textColor="@color/text_black"
+            android:textSize="@dimen/font_size_common" />
+
+        <TextView
+            android:id="@+id/tv_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:paddingBottom="@dimen/padding_common"
+            android:paddingTop="@dimen/padding_common"
+            android:text="新用户注册"
+            android:textColor="@color/text_black"
+            android:textSize="@dimen/font_size_common" />
+    </LinearLayout>
+
+
+</LinearLayout>
+

@@ -13,8 +13,8 @@
     <dimen name="title_bar_width">44dp</dimen>
     <dimen name="title_bar_height">44dp</dimen>
     <dimen name="title_content_size">30dp</dimen>
-    <dimen name="title_font_size">20sp</dimen>
-    <dimen name="title_font_size_small">18sp</dimen>
+    <dimen name="title_font_size">17sp</dimen> <!--20-->
+    <dimen name="title_font_size_small">15sp</dimen> <!--18-->
 
     <!--tab-->
     <dimen name="tab_height">48dp</dimen>
@@ -39,4 +39,6 @@
     <dimen name="font_size_larger">18sp</dimen>
     <dimen name="font_size_larger2">20sp</dimen>
     <dimen name="font_size_larger3">24sp</dimen>
+
+    <dimen name="ad_height">170dp</dimen>
 </resources>

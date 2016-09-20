@@ -63,4 +63,6 @@ dependencies {
     apt 'com.jakewharton:butterknife-compiler:8.2.1'
 
     compile project(':lib')
+    compile project(':photogallery')
+    compile project(':FlycoTabLayout_Lib')
 }

@@ -9,7 +9,7 @@ import com.google.gson.JsonElement;
 import java.util.ArrayList;
 import java.util.List;
 
-class NSJsonParser {
+public class NSJsonParser {
     public static final String TAG = NSJsonParser.class.getSimpleName();
 
     public <T> void parse(String json, Class<T> clazz, NSCallback<T> callback) {
@@ -50,7 +50,7 @@ class NSJsonParser {
         }
     }
 
-    static class JsonResponse {
+    public static class JsonResponse {
         int error;
         String msg;
         JsonElement data;

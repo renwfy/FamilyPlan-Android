@@ -20,6 +20,7 @@ public class Recipe {
     private String brief;
     private String playbill;
     private int type;
+    private int reviews_vote;
     private int favor_num;
     private int nice_num;
     private String updated_date;
@@ -58,6 +59,14 @@ public class Recipe {
 
     public int getType() {
         return type;
+    }
+
+    public int getReviews_vote() {
+        return reviews_vote;
+    }
+
+    public void setReviews_vote(int reviews_vote) {
+        this.reviews_vote = reviews_vote;
     }
 
     public void setType(int type) {
