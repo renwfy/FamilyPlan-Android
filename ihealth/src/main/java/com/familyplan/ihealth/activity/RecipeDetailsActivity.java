@@ -83,7 +83,6 @@ public class RecipeDetailsActivity extends CommonActivity {
     protected void onViewCreated() {
         super.onViewCreated();
         setTitle("");
-        setTitleBarDisable();
     }
 
     @Override

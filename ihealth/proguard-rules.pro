@@ -106,6 +106,7 @@
 # Application classes that will be serialized/deserialized over Gson
 -keep class com.familyplan.ihealth.model.** {*;}
 -keep class com.familyplan.ihealth.Session {*;}
+-keep class com.familyplan.ihealth.net.** {*;}
 ##---------------End: proguard configuration for Gson  ----------
 
 #自定义VIEW

@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.familyplan.ihealth.fragment.FragmentHomeList;
+import com.familyplan.ihealth.fragment.FragmentHomeNvList;
 import com.familyplan.ihealth.model.ArticleCategory;
 
 import java.util.List;

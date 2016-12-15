@@ -1,5 +1,6 @@
 package com.familyplan.ihealth.fragment;
 
+import android.view.View;
 import android.widget.LinearLayout;
 
 import com.familyplan.ihealth.R;
@@ -16,6 +17,7 @@ public abstract class WebFragment extends BaseFragment {
 
     ZMWebView webView;
     boolean viewCreated;
+    public boolean canRefresh = false;
 
     @Override
     protected int getFrameLayout() {
@@ -29,13 +31,20 @@ public abstract class WebFragment extends BaseFragment {
         container.addView(webView.getRoot());
         titleBar.setWebClient(webView);
         webView.init(getUrl());
-        titleBar.setBackDisEnable();
+    }
+
+    public void setTitleBarDisable(){
+        titleBar.setVisibility(View.GONE);
+    }
+
+    public void setPullToRefreshDisEnable(){
+        webView.setPullToRefreshDisEnable();
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        if(viewCreated){
+        if(canRefresh && viewCreated){
             webView.onResume();
         }
         viewCreated = true;

@@ -36,6 +36,10 @@ import java.io.File;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import in.srain.cube.views.ptr.PtrClassicFrameLayout;
+import in.srain.cube.views.ptr.PtrDefaultHandler;
+import in.srain.cube.views.ptr.PtrFrameLayout;
+import in.srain.cube.views.ptr.PtrHandler;
 
 public class ZMWebView {
     private static final String TAG = "ZMWebView";
@@ -46,6 +50,8 @@ public class ZMWebView {
     private boolean isError = false;
     @BindView(R.id.framelayout)
     RelativeLayout frameLayout;
+    @BindView(R.id.web_ptrframelayout)
+    PtrClassicFrameLayout webPtrFrameLayout;
     @BindView(R.id.zm_webview)
     WebView webView;
     @BindView(R.id.progress_wheel)
@@ -158,6 +164,7 @@ public class ZMWebView {
         });
         webView.setWebViewClient(new WebViewClient() {
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                AppLog.d("TTT","shouldOverrideUrlLoading");
                 return WebviewUtils.shouldOverrideUrlLoading(ZMWebView.this, url);
             }
 
@@ -199,7 +206,27 @@ public class ZMWebView {
             }
 
         });
-        webView.addJavascriptInterface(new MyJsInterface(), "zmkm");
+        webView.addJavascriptInterface(new MyJsInterface(), "fplan");
+        webPtrFrameLayout.setLastUpdateTimeRelateObject(this);
+        webPtrFrameLayout.setPtrHandler(new PtrHandler() {
+            @Override
+            public void onRefreshBegin(PtrFrameLayout frame) {
+                //onrefrash
+                onRefresh();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        webPtrFrameLayout.refreshComplete();
+                    }
+                },1200);
+            }
+
+            @Override
+            public boolean checkCanDoRefresh(PtrFrameLayout frame, View content, View header) {
+                return PtrDefaultHandler.checkContentCanBePulledDown(frame, webView, header);
+            }
+        });
+        webPtrFrameLayout.disableWhenHorizontalMove(true);
         WebviewUtils.loadUrl(webView, url);
     }
 
@@ -235,6 +262,10 @@ public class ZMWebView {
 
     public void hideProgress() {
         progressBar.setVisibility(View.GONE);
+    }
+
+    public void setPullToRefreshDisEnable(){
+        webPtrFrameLayout.setEnabled(false);
     }
 
     protected void setTitleBarMenu(TitleBarMenuItem item) {

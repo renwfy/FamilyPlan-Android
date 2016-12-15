@@ -31,6 +31,7 @@
                 <data android:scheme="ihealth" />
             </intent-filter>
         </activity>
+        <activity android:name=".webapp.ZMWebActivity"></activity>
         <activity android:name=".activity.RecipeDetailsActivity"></activity>
         <activity android:name=".activity.LoginActivity"></activity>
         <activity android:name=".activity.RegisterActivity"></activity>
