@@ -1,1 +1,1 @@
-include ':ihealth', ':lib',':photogallery',':FlycoTabLayout_Lib'
+include ':ihealth', ':lib', ':photogallery', ':FlycoTabLayout_Lib', ':nutrisort'

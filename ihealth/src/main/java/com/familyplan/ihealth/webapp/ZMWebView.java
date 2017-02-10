@@ -164,7 +164,6 @@ public class ZMWebView {
         });
         webView.setWebViewClient(new WebViewClient() {
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                AppLog.d("TTT","shouldOverrideUrlLoading");
                 return WebviewUtils.shouldOverrideUrlLoading(ZMWebView.this, url);
             }
 
@@ -206,7 +205,7 @@ public class ZMWebView {
             }
 
         });
-        webView.addJavascriptInterface(new MyJsInterface(), "fplan");
+        webView.addJavascriptInterface(new MyJsInterface(), "family");
         webPtrFrameLayout.setLastUpdateTimeRelateObject(this);
         webPtrFrameLayout.setPtrHandler(new PtrHandler() {
             @Override

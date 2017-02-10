@@ -1,12 +1,9 @@
 package com.familyplan.ihealth.webapp;
 
 import android.content.Context;
-import android.content.Intent;
 import android.text.TextUtils;
 import android.webkit.WebView;
 
-import com.familyplan.ihealth.activity.ArticleDetailsActivity;
-import com.familyplan.ihealth.activity.RecipeDetailsActivity;
 import com.lib.utils.AppLog;
 
 public class WebviewUtils {
@@ -20,17 +17,12 @@ public class WebviewUtils {
         try {
             if (url.contains("#share")) {    // ‘#share’ 调用分享
                 view.showShare();
-            } else if(url.contains("#articleDetails:")){
-                int index = url.indexOf("#articleDetails:");
-                int id = Integer.parseInt(url.substring(index + 16)) ;          //;
-
-                view.getContext().startActivity(new Intent(view.getContext(), ArticleDetailsActivity.class).putExtra("article_id",id));
             }else if (url.endsWith("#inner")) {      // ‘#inner’ 页面内跳转
                 loadUrl(view.getWebView(), url);
             } else {   // 默认在新页面打开
                 // 域名白名单 过滤
                 if (isWhiteDomain(view.getContext(), url)) {
-                    ZMWebActivity.displayActivity(view.getContext(), "FamilyPlan", url);
+                    ZMWebActivity.displayActivity(view.getContext(), "", url);
                 }
             }
         } catch (Exception e) {

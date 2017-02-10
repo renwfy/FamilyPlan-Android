@@ -145,8 +145,9 @@ public class AutoLoadListView extends ListView implements OnScrollListener {
                         mEndLoadTipsImagView.setVisibility(View.VISIBLE);
                         mEndLoadTipsTextView.setText("您已经看到最后了");
                         //不文字提示没有更多
-                        if (this.getFooterViewsCount() > 0)
+                        if (this.getFooterViewsCount() > 0){
                             this.removeFooterView(mEndRootView);
+                        }
                     }
                     break;
                 default:

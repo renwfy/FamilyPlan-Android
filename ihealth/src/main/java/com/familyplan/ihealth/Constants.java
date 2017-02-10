@@ -17,7 +17,7 @@ public class Constants {
 
     public static void initDebug(boolean isDebug) {
         DEBUG = isDebug;
-        BASE_URL = DEBUG ? "http://ifamilyplan.com:3012/api" : "http://ifamilyplan.com:3012/api";
+        BASE_URL = DEBUG ? "http://10.0.2.2:3012/api" : "http://ifamilyplan.com:3012/api";
         WEB_HOST = DEBUG ? "http://10.0.2.2:3012/app" : "http://ifamilyplan.com:3012/app";
     }
 }
